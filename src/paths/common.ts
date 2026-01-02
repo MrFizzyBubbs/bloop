@@ -181,7 +181,7 @@ export function batfellow(): LoopTask[] {
       do: () => {
         withCloseted($items`mime army shotglass`, () => {
           if (have($item`astral pilsner`, 2)) drink($item`astral pilsner`, 2);
-          else if (mallPrice($item`splendid martini`) < 15_000) drink($item`splendid martini`, 2);
+          else if (mallPrice($item`splendid martini`) < 20_000) drink($item`splendid martini`, 2);
           else throw new Error("Unable to find a suitable booze to kickstart our liver with.");
         });
       },
