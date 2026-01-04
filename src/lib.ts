@@ -19,12 +19,24 @@ import {
   Path,
   print,
   putCloset,
+  runCombat,
   Skill,
   spleenLimit,
   takeCloset,
   visitUrl,
 } from "kolmafia";
-import { $familiar, $item, $stat, clamp, get, have, Lifestyle, makeByXFunction } from "libram";
+import {
+  $familiar,
+  $item,
+  $monster,
+  $stat,
+  clamp,
+  get,
+  have,
+  Lifestyle,
+  Macro,
+  makeByXFunction,
+} from "libram";
 import { args } from "./args";
 import { makeValue } from "garbo-lib";
 
@@ -79,6 +91,20 @@ export function createPermOptions(): { permSkills: Map<Skill, Lifestyle>; neverA
 }
 
 export function cliExecuteThrow(command: string): void {
+  if (command.startsWith("crimbo")) {
+    while (true) {
+      if (cliExecute(command)) return;
+      if (
+        get("lastMacroError") ===
+        'Too many, or zero,  matches for skill, "Micrometeorite", macro aborted.'
+      ) {
+        runCombat(Macro.if_($monster`lynyrd`, Macro.attack().repeat()).toString());
+      } else {
+        throw `Failed to execute ${command}`;
+      }
+    }
+  }
+
   if (!cliExecute(command)) throw `Failed to execute ${command}`;
 }
 
