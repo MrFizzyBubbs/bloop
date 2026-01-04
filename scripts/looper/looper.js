@@ -22541,7 +22541,7 @@ var ascend = __webpack_require__(945);
 // EXTERNAL MODULE: ./node_modules/garbo-lib/dist/index.js
 var dist = __webpack_require__(508);
 ;// ./src/lib.ts
-var lib_templateObject, lib_templateObject2, lib_templateObject3, lib_templateObject4, lib_templateObject5;
+var lib_templateObject, lib_templateObject2, lib_templateObject3, lib_templateObject4, lib_templateObject5, lib_templateObject6;
 function lib_taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.freeze(Object.defineProperties(e, { raw: { value: Object.freeze(t) } })); }
 
 
@@ -22583,6 +22583,15 @@ function createPermOptions() {
   };
 }
 function cliExecuteThrow(command) {
+  if (command.startsWith("crimbo")) {
+    while (true) {
+      if ((0,external_kolmafia_.cliExecute)(command)) return;
+      if ((0,dist_property.get)("lastMacroError") === 'Too many, or zero,  matches for skill, "Micrometeorite", macro aborted.') {
+        (0,external_kolmafia_.runCombat)(combat/* Macro */.xJ.if_((0,template_string/* $monster */.f6)(lib_templateObject3 || (lib_templateObject3 = lib_taggedTemplateLiteral(["lynyrd"]))), combat/* Macro */.xJ.attack().repeat()).toString());
+      }
+      throw "Failed to execute ".concat(command);
+    }
+  }
   if (!(0,external_kolmafia_.cliExecute)(command)) throw "Failed to execute ".concat(command);
 }
 var byAscendingStat = (0,utils/* makeByXFunction */._x)(() => args.major.class.primestat.toString());
@@ -22614,14 +22623,14 @@ function mostRecentPath() {
   return match !== null ? Path.get(match[1]) : null;
 }
 var _makeValue = (0,dist.makeValue)({
-    itemValues: new Map([[(0,template_string/* $item */.K8)(lib_templateObject3 || (lib_templateObject3 = lib_taggedTemplateLiteral(["fake hand"]))), 50000]])
+    itemValues: new Map([[(0,template_string/* $item */.K8)(lib_templateObject4 || (lib_templateObject4 = lib_taggedTemplateLiteral(["fake hand"]))), 50000]])
   }),
   loopValue = _makeValue.value;
 
 function rolloverTurns() {
   var base = (0,external_kolmafia_.myAdventures)() + 40 + (0,external_kolmafia_.numericModifier)("Adventures") + (0,utils/* clamp */.qE)(2 * (0,dist_property.get)("_resolutionAdv"), 0, 10) + (0,dist_property.get)("_gibbererAdv") + (0,dist_property.get)("_hareAdv");
   return {
-    actual: (0,utils/* clamp */.qE)(base, 0, 200) + ((0,lib/* have */.HO)((0,template_string/* $item */.K8)(lib_templateObject4 || (lib_templateObject4 = lib_taggedTemplateLiteral(["potato alarm clock"])))) ? 5 : 0) + ((0,lib/* have */.HO)((0,template_string/* $item */.K8)(lib_templateObject5 || (lib_templateObject5 = lib_taggedTemplateLiteral(["etched hourglass"])))) ? 5 : 0),
+    actual: (0,utils/* clamp */.qE)(base, 0, 200) + ((0,lib/* have */.HO)((0,template_string/* $item */.K8)(lib_templateObject5 || (lib_templateObject5 = lib_taggedTemplateLiteral(["potato alarm clock"])))) ? 5 : 0) + ((0,lib/* have */.HO)((0,template_string/* $item */.K8)(lib_templateObject6 || (lib_templateObject6 = lib_taggedTemplateLiteral(["etched hourglass"])))) ? 5 : 0),
     lost: base - (0,utils/* clamp */.qE)(base, 0, 200)
   };
 }
