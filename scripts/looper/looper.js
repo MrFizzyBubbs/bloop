@@ -22588,8 +22588,9 @@ function cliExecuteThrow(command) {
       if ((0,external_kolmafia_.cliExecute)(command)) return;
       if ((0,dist_property.get)("lastMacroError") === 'Too many, or zero,  matches for skill, "Micrometeorite", macro aborted.') {
         (0,external_kolmafia_.runCombat)(combat/* Macro */.xJ.if_((0,template_string/* $monster */.f6)(lib_templateObject3 || (lib_templateObject3 = lib_taggedTemplateLiteral(["lynyrd"]))), combat/* Macro */.xJ.attack().repeat()).toString());
+      } else {
+        throw "Failed to execute ".concat(command);
       }
-      throw "Failed to execute ".concat(command);
     }
   }
   if (!(0,external_kolmafia_.cliExecute)(command)) throw "Failed to execute ".concat(command);
